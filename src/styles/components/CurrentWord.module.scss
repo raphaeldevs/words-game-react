@@ -22,15 +22,7 @@
 
     text-transform: uppercase;
 
-    $wordLength: 5;
-
     transition: color .3s ease;
-
-    @for $iterator from 1 through $wordLength {
-      &:nth-child(#{$iterator}) {
-        animation-delay: #{$iterator * 0.1}s;
-      }
-    }
 
     &.selected {
       color: var(--yellow)
