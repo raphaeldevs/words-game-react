@@ -1,0 +1,39 @@
+.wordsGrid {
+  margin-top: 5vh;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 1rem;
+
+  span {
+    width: 6.25rem;
+    height: 6.25rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    font: 900 3.625rem Nunito, sans-serif;
+
+    text-transform: uppercase;
+
+    background-color: var(--blue-primary);
+
+    cursor: pointer;
+
+    transition: background-color .2s ease;
+
+    user-select: none;
+
+    &.selected {
+      background-color: var(--yellow); 
+      color: #90734E;
+    }
+  }
+}
