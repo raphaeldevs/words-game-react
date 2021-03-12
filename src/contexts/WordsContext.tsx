@@ -10,6 +10,7 @@ interface WordsContextData {
   currentWord: string
   selectedWordLetters: string
   currentExperience: number
+  experienceToNextLevel: number
   level: number
   levelUp: () => void
   setNewWord: () => void
@@ -18,7 +19,7 @@ interface WordsContextData {
 export const WordsContext = createContext({} as WordsContextData)
 
 export function WordsProvider({ children }: WordsProviderProps) {
-  const [currentWord, setCurrentWord] = useState('')
+  const [currentWord, setCurrentWord] = useState(getRandomWord())
   
   const [selectedWordLetters, setSelectedWordLetters] = useState('')
   
@@ -41,6 +42,7 @@ export function WordsProvider({ children }: WordsProviderProps) {
     level, 
     levelUp,
     currentExperience,
+    experienceToNextLevel,
     setNewWord
   }
 
