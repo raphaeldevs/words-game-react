@@ -11,10 +11,9 @@
 }
 
 .container section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  flex: 1;
-  align-content: center;
+  margin-top: 5rem;
 }

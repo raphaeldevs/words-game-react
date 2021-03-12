@@ -1,3 +1,4 @@
+import { CurrentWord } from '../components/CurrentWord'
 import { ExperienceBar } from '../components/ExperienceBar'
 
 import { WordsGrid } from '../components/WordsGrid'
@@ -11,6 +12,7 @@ export function Game() {
           <ExperienceBar />
 
           <section>
+            <CurrentWord />
             <WordsGrid />
           </section>
         </div>

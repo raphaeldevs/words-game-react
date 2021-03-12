@@ -1,0 +1,53 @@
+.currentWord {
+  font: 900 3rem Nunito, sans-serif;
+
+  line-height: 3rem;
+
+  border-bottom: 2px solid var(--gray-line);
+
+  overflow: hidden;
+
+  padding: 0 1rem;
+
+  span {
+    display: inline-block;
+
+    transform: translateY(100%);
+
+    animation: start .4s ease forwards;
+
+    color: var(--title);
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+
+    $wordLength: 5;
+
+    transition: color .3s ease;
+
+    @for $iterator from 1 through $wordLength {
+      &:nth-child(#{$iterator}) {
+        animation-delay: #{$iterator * 0.1}s;
+      }
+    }
+
+    &.selected {
+      color: var(--yellow)
+    }
+  }
+}
+
+@keyframes start {
+  0% {
+    transform: translateY(100%);
+  }
+
+  50% {
+    transform: translateY(-10%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
