@@ -12,6 +12,6 @@
 
 ## 🧠 Motivação
 
-Jogos com Javascript mudaram minha jornada como desenvolvedor. Primeiro o [Simon Game](https://github.com/raphaeldevs/simon-game), depois o [Visual Memory](https://github.com/raphaeldevs/visual-memory) e não ser diferente com este jogo. 
+Jogos com Javascript mudaram minha jornada como desenvolvedor. Primeiro o [Simon Game](https://github.com/raphaeldevs/simon-game), depois o [Visual Memory](https://github.com/raphaeldevs/visual-memory) e agora este.
 
 A inspiração surgiu quando vi meu irmão de 7 anos voltar da escola. A minha ideia era fazer um jogo onde ele pudesse ter contato com as letras e formar palavras, mesmo sem ainda saber ler totalmente.
