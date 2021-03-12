@@ -2,6 +2,8 @@
   display: flex;
   align-items: center;
 
+  font-family: Inter, sans-serif;
+
   span {
     font-size: 1rem;
 
@@ -14,6 +16,8 @@
       transform: translateX(-50%);
     
       transition: left 1s ease-out;
+
+      font-weight: 500;
     }
   }
 
@@ -26,7 +30,7 @@
   
     border-radius: 4px;
   
-    background-color: var(--gray);
+    background-color: var(--gray-line);
   
     position: relative;
 
@@ -37,7 +41,7 @@
     
       border-radius: 4px;
     
-      background-color: var(--green);
+      background-color: var(--yellow);
     
       transition: width 1s ease-out;
     }
