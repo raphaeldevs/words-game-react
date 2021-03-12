@@ -1,3 +1,22 @@
 export function WordsGrid() {
-  return <div />
+  return (
+    <main>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+      <span>d</span>
+    </main>
+  )
 }
