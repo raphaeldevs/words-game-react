@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
-import { WordsContext } from '../contexts/WordsContext'
-import styles from '../styles/components/CurrentWord.module.scss'
+import { useContext } from 'react'
+import { WordsContext } from '../../contexts/WordsContext'
+import styles from '../../styles/components/CurrentWord.module.scss'
 
 import { Letter } from './Letter'
 

@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 
-import { WordsContext } from '../contexts/WordsContext'
+import { WordsContext } from '../../contexts/WordsContext'
 
-import { getLettersSequence } from '../utils/words'
+import { getLettersSequence } from '../../utils/words'
 
 import { Letter } from './Letter'
 
-import styles from '../styles/components/WordsGrid.module.scss'
+import styles from '../../styles/components/WordsGrid.module.scss'
 
 export function LettersGrid() {
   const { currentWord } = useContext(WordsContext)
@@ -22,7 +22,6 @@ export function LettersGrid() {
           key={Math.random()}
           letter={letter}
           selectedClassName={styles.selected}
-          onClickEvent
         />
       ))}
     </main>
