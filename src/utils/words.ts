@@ -1,32 +1,15 @@
 import words from '../../words.json'
 
 const letters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z'
+  'A', 'B', 'C',
+  'D', 'E', 'F',
+  'G', 'H', 'I',
+  'J', 'K', 'L',
+  'M', 'N', 'O',
+  'P', 'Q', 'R',
+  'S', 'T', 'U',
+  'V', 'W', 'X',
+  'Y', 'Z'
 ]
 
 export function getIncludedLetters(word: string) {
@@ -38,7 +21,7 @@ export function getIncludedLetters(word: string) {
 }
 
 export function getRandomWord() {
-  const randomIndex = Math.floor(Math.random() * (words.length + 1))
+  const randomIndex = Math.floor(Math.random() * words.length)
 
   return words[randomIndex]
 }
@@ -55,6 +38,6 @@ export function getLettersSequence(needToInclude: string) {
   sequenceLetters.length = sequenceLength
 
   return [...sequenceLetters, ...needToInclude].sort(
-    (foo, bar) => 0 - Math.random()
+    (foo, bar) => 0.1 - Math.random()
   )
 }
