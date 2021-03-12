@@ -1,20 +1,26 @@
+import { useContext } from 'react'
+import { WordsContext } from '../contexts/WordsContext'
 import styles from '../styles/components/ExperienceBar.module.scss'
 
 export function ExperienceBar() {
+  const { currentExperience, experienceToNextLevel } = useContext(WordsContext)
+
+  const currentExperiencePercent = (currentExperience / experienceToNextLevel) * 100
+
   return (
     <header className={styles.experienceBar}>
       <span>0 xp</span>
       <div>
-        <div style={{ width: `50%` }} />
+        <div style={{ width: `${currentExperiencePercent}%` }} />
 
         <span
           className={styles.currentExperience}
-          style={{ left: `50%` }}
+          style={{ left: `${currentExperiencePercent}%` }}
         >
-          150 xp
+          { currentExperience } xp
         </span>
       </div>
-      <span>300 xp</span>
+      <span>{ experienceToNextLevel } xp</span>
     </header>
   )
 }
