@@ -3,7 +3,8 @@
 </p>
 
 <h1 align="center">
-  Words Game
+  Words Game <br>
+  <code>React Version</code>
 </h1>
 
 <p align="center">
