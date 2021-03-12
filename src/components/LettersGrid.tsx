@@ -8,7 +8,7 @@ import { Letter } from './Letter'
 
 import styles from '../styles/components/WordsGrid.module.scss'
 
-export function WordsGrid() {
+export function LettersGrid() {
   const { currentWord } = useContext(WordsContext)
   
   const [lettersSequence, setLettersSequence] = useState<string[]>(

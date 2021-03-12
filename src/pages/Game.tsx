@@ -1,7 +1,7 @@
 import { CurrentWord } from '../components/CurrentWord'
 import { ExperienceBar } from '../components/ExperienceBar'
 
-import { WordsGrid } from '../components/WordsGrid'
+import { LettersGrid } from '../components/LettersGrid'
 
 import styles from '../styles/pages/Game.module.scss'
 
@@ -13,7 +13,7 @@ export function Game() {
 
           <section>
             <CurrentWord />
-            <WordsGrid />
+            <LettersGrid />
           </section>
         </div>
     </div>
