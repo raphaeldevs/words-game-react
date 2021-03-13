@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
 import { WordsContext } from '../../contexts/WordsContext'
 
@@ -10,20 +10,28 @@ import styles from '../../styles/components/WordsGrid.module.scss'
 
 export function LettersGrid() {
   const { currentWord } = useContext(WordsContext)
-  
+
   const [lettersSequence, setLettersSequence] = useState<string[]>(
     getLettersSequence(currentWord)
   )
 
+  useEffect(() => {
+    const lettersSequence = getLettersSequence(currentWord)
+
+    setLettersSequence(lettersSequence)
+  }, [currentWord])
+
   return (
     <main className={styles.wordsGrid}>
-      {lettersSequence.map(letter => (
-        <Letter
-          key={Math.random()}
-          letter={letter}
-          selectedClassName={styles.selected}
-        />
-      ))}
+      {lettersSequence.map((letter, index) => {
+        return (
+          <Letter
+            key={index}
+            letter={letter}
+            selectedClassName={styles.selected}
+          />
+        )
+      })}
     </main>
   )
 }

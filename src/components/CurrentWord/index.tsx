@@ -1,18 +1,22 @@
 import { useContext } from 'react'
-import { WordsContext } from '../../contexts/WordsContext'
+
+import { LetterContext } from '../../contexts/LetterContext'
+
 import styles from '../../styles/components/CurrentWord.module.scss'
 
 import { Letter } from './Letter'
 
 export function CurrentWord() {
-  const { currentWord } = useContext(WordsContext)
+  const { letters } = useContext(LetterContext)
 
   return (
     <h1 className={styles.currentWord} data-word-lenght={4}>
-      {[...currentWord].map((letter, index) => (
+      {letters.map(({ text, selectedState, id }, index) => (
         <Letter
+          key={id}
           animationDelay={`${index * 0.1}s`}
-          letter={letter}
+          letter={text.toUpperCase()}
+          selectedState={selectedState}
           selectedClassName={styles.selected}
         />
       ))}

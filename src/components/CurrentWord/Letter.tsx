@@ -1,22 +1,20 @@
-import { useState } from 'react'
-
 interface LetterProps {
   letter: string
   selectedClassName: string
   animationDelay: string
+  selectedState: boolean
 }
 
 export function Letter({
   letter,
+  selectedState,
   selectedClassName,
   animationDelay
 }: LetterProps) {
-  const [isSelected, setIsSelected] = useState(false)
-
   return (
     <span
       style={{ animationDelay }}
-      className={isSelected ? selectedClassName : ''}
+      className={selectedState ? selectedClassName : ''}
     >
       {letter}
     </span>
