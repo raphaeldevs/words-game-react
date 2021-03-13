@@ -2,6 +2,8 @@ import { createContext, ReactNode, useState } from 'react'
 
 import { getRandomWord } from '../utils/words'
 
+import { LevelUpModal } from '../components/LevelUpModal'
+
 interface WordsProviderProps {
   children: ReactNode
 }
@@ -14,6 +16,7 @@ interface WordsContextData {
   experienceToNextLevel: number
   currentLetterIndex: number
   level: number
+  isLevelUpModalOpen: boolean
   levelUp: () => void
   incrementCurrentLetterIndex: () => void
   startNewState: () => void
@@ -31,7 +34,10 @@ export function WordsProvider({ children }: WordsProviderProps) {
 
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0)
 
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
+
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+
   const wordAmount = ((currentWord.length) * 3)
 
   function levelUp() {
@@ -70,12 +76,15 @@ export function WordsProvider({ children }: WordsProviderProps) {
     experienceToNextLevel,
     incrementCurrentLetterIndex,
     startNewState,
-    wordAmount
+    wordAmount,
+    isLevelUpModalOpen
   }
 
   return (
     <WordsContext.Provider value={contextValue}>
       {children}
+
+      {isLevelUpModalOpen && <LevelUpModal />}
     </WordsContext.Provider>
   )
 }
