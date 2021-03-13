@@ -12,7 +12,7 @@ export function Letter({
   selectedClassName
 }: LetterProps) {
   const { checkIsCorrectCurrentLetter, handleSelectLetter } = useContext(LetterContext)
-  const { currentWord, newState } = useContext(WordsContext)
+  const { currentWord, startNewState } = useContext(WordsContext)
 
   const [isSelected, setIsSelected] = useState(false)
 
@@ -30,7 +30,7 @@ export function Letter({
 
     spanRef.current?.animate(keyframes, config)
 
-    newState()
+    startNewState()
   }
 
   function handleClick() {

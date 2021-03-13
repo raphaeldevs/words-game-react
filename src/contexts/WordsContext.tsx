@@ -8,6 +8,7 @@ interface WordsProviderProps {
 
 interface WordsContextData {
   currentWord: string
+  wordAmount: number
   selectedWordLetters: string
   currentExperience: number
   experienceToNextLevel: number
@@ -15,7 +16,7 @@ interface WordsContextData {
   level: number
   levelUp: () => void
   incrementCurrentLetterIndex: () => void
-  newState: () => void
+  startNewState: () => void
 }
 
 export const WordsContext = createContext({} as WordsContextData)
@@ -31,20 +32,32 @@ export function WordsProvider({ children }: WordsProviderProps) {
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0)
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
+  const wordAmount = ((currentWord.length) * 3)
 
   function levelUp() {
     setLevel(level + 1)
   }
 
   function incrementCurrentLetterIndex() {
-    if (currentLetterIndex === currentWord.length - 1) return newState()
+    if (currentLetterIndex === currentWord.length - 1) return startNewState(true)
 
     setCurrentLetterIndex(currentLetterIndex + 1)
   }
 
-  function newState() {
+  function startNewState(winner?: boolean) {
     setCurrentLetterIndex(0)
     setCurrentWord(getRandomWord())
+
+    if (winner) {
+      let finalExperience = currentExperience + wordAmount
+
+      if (finalExperience >= experienceToNextLevel) {
+        finalExperience -= experienceToNextLevel
+        levelUp()
+      }
+
+      setCurrentExperience(finalExperience)
+    }
   }
 
   const contextValue = {
@@ -56,7 +69,8 @@ export function WordsProvider({ children }: WordsProviderProps) {
     currentExperience,
     experienceToNextLevel,
     incrementCurrentLetterIndex,
-    newState
+    startNewState,
+    wordAmount
   }
 
   return (
