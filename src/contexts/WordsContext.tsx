@@ -20,6 +20,7 @@ interface WordsContextData {
   levelUp: () => void
   incrementCurrentLetterIndex: () => void
   startNewState: () => void
+  closeLevelUpModal: () => void
 }
 
 export const WordsContext = createContext({} as WordsContextData)
@@ -34,7 +35,7 @@ export function WordsProvider({ children }: WordsProviderProps) {
 
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0)
 
-  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(true)
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
@@ -66,6 +67,10 @@ export function WordsProvider({ children }: WordsProviderProps) {
     }
   }
 
+  function closeLevelUpModal() {
+    setIsLevelUpModalOpen(false)
+  }
+
   const contextValue = {
     currentWord: currentWord.toUpperCase(),
     selectedWordLetters,
@@ -77,7 +82,8 @@ export function WordsProvider({ children }: WordsProviderProps) {
     incrementCurrentLetterIndex,
     startNewState,
     wordAmount,
-    isLevelUpModalOpen
+    isLevelUpModalOpen,
+    closeLevelUpModal
   }
 
   return (
