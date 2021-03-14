@@ -35,7 +35,7 @@ export function WordsProvider({ children }: WordsProviderProps) {
 
   const [currentLetterIndex, setCurrentLetterIndex] = useState(0)
 
-  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(true)
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
@@ -43,6 +43,7 @@ export function WordsProvider({ children }: WordsProviderProps) {
 
   function levelUp() {
     setLevel(level + 1)
+    setIsLevelUpModalOpen(true)
   }
 
   function incrementCurrentLetterIndex() {
