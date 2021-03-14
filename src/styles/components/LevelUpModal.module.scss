@@ -25,6 +25,8 @@
   
     position: relative;
 
+    animation: fromDownToUp .4s ease;
+
     div {
       padding: 2rem 3rem;
     }
@@ -86,5 +88,17 @@
     
       cursor: pointer;
     }
+  }
+}
+
+@keyframes fromDownToUp {
+  from {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
