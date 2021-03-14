@@ -2,53 +2,96 @@ import { createContext, ReactNode, useState } from 'react'
 
 import { getRandomWord } from '../utils/words'
 
+import { LevelUpModal } from '../components/LevelUpModal'
+
 interface WordsProviderProps {
   children: ReactNode
 }
 
 interface WordsContextData {
   currentWord: string
+  wordAmount: number
   selectedWordLetters: string
   currentExperience: number
   experienceToNextLevel: number
+  currentLetterIndex: number
   level: number
+  isLevelUpModalOpen: boolean
   levelUp: () => void
-  setNewWord: () => void
+  incrementCurrentLetterIndex: () => void
+  startNewState: () => void
+  closeLevelUpModal: () => void
 }
 
 export const WordsContext = createContext({} as WordsContextData)
 
 export function WordsProvider({ children }: WordsProviderProps) {
   const [currentWord, setCurrentWord] = useState(getRandomWord())
-  
+
   const [selectedWordLetters, setSelectedWordLetters] = useState('')
-  
+
   const [level, setLevel] = useState(1)
   const [currentExperience, setCurrentExperience] = useState(0)
 
+  const [currentLetterIndex, setCurrentLetterIndex] = useState(0)
+
+  const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
+
   const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
 
-  function setNewWord() {
-    setCurrentWord(getRandomWord())
-  }
+  const wordAmount = ((currentWord.length) * 3)
 
   function levelUp() {
     setLevel(level + 1)
+    setIsLevelUpModalOpen(true)
+  }
+
+  function incrementCurrentLetterIndex() {
+    if (currentLetterIndex === currentWord.length - 1) return startNewState(true)
+
+    setCurrentLetterIndex(currentLetterIndex + 1)
+  }
+
+  function startNewState(winner?: boolean) {
+    setCurrentLetterIndex(0)
+    setCurrentWord(getRandomWord())
+
+    if (winner) {
+      let finalExperience = currentExperience + wordAmount
+
+      if (finalExperience >= experienceToNextLevel) {
+        finalExperience -= experienceToNextLevel
+        levelUp()
+      }
+
+      setCurrentExperience(finalExperience)
+    }
+  }
+
+  function closeLevelUpModal() {
+    setIsLevelUpModalOpen(false)
   }
 
   const contextValue = {
-    currentWord,
+    currentWord: currentWord.toUpperCase(),
     selectedWordLetters,
-    level, 
+    level,
     levelUp,
+    currentLetterIndex,
     currentExperience,
     experienceToNextLevel,
-    setNewWord
+    incrementCurrentLetterIndex,
+    startNewState,
+    wordAmount,
+    isLevelUpModalOpen,
+    closeLevelUpModal
   }
 
   return (
     <WordsContext.Provider value={contextValue}>
       {children}
+
+      {isLevelUpModalOpen && <LevelUpModal />}
     </WordsContext.Provider>
   )
 }
